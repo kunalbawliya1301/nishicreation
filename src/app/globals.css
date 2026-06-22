@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+@theme {
+  /* Fonts */
+  --font-serif: var(--font-cormorant), Georgia, serif;
+  --font-sans: var(--font-manrope), sans-serif;
+
+  /* Brand Colors */
+  --color-charcoal: #1A1A1A;
+  --color-dark: #0F0F0F;
+  --color-cream: #F8F7F4;
+  --color-gold: #C8A96B;
+  --color-gold-hover: #B09254;
+
+  /* Custom Transitions */
+  --animate-fade-in: fade-in 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-slide-up: slide-up 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-reveal: reveal 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes reveal {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+
+:root {
+  --background: #0F0F0F;
+  --foreground: #F8F7F4;
+}
+
+/* Base resets & typography */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-manrope);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0F0F0F;
+}
+::-webkit-scrollbar-thumb {
+  background: #C8A96B/30;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #C8A96B/60;
+}
+
+/* Premium utility classes */
+.font-editorial {
+  font-family: var(--font-serif);
+  font-style: italic;
+}
+
+/* Glassmorphism effects */
+.glass-frosted-dark {
+  background: rgba(26, 26, 26, 0.7);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.glass-frosted-light {
+  background: rgba(248, 247, 244, 0.85);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(15, 15, 15, 0.05);
+}
+
+/* Luxury hover line effects */
+.hover-gold-line {
+  position: relative;
+}
+.hover-gold-line::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 1px;
+  bottom: -2px;
+  left: 0;
+  background-color: #C8A96B;
+  transform-origin: bottom right;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.hover-gold-line:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+/* Text overlay effects */
+.gold-text-gradient {
+  background: linear-gradient(135deg, #FFF 0%, #C8A96B 50%, #B09254 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Custom layout helpers */
+.editorial-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 1.5rem;
+}
